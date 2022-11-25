@@ -22,7 +22,7 @@ Check [README.md](README.md) to install all necessary tools and configurations t
 
 ## Update CHANGELOG.md
 
-Create a new section in [CHANGELOG.md](CHANGELOG.md) with the new box version you have just created. The final version  tag will be `BOX_VERSION_BASE-YYYYMMDD` with `YYYYMMDD` being today's date (at the time of running `build.sh`).
+Create a new section in [CHANGELOG.md](CHANGELOG.md) with the new box version you have just created. The final version tag will be `BOX_VERSION_BASE-YYYYMMDD` with `YYYYMMDD` being today's date (at the time of running `build.sh`).
 
 In this section, add bullets for every item you have changed in the release.
 
