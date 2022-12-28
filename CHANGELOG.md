@@ -1,5 +1,15 @@
 ## Changelog
 
+### 1.2.0-20221228
+* Updated ilionx/ubuntu2204 base box to version 1.2.0-20221228
+* Installed cri-dockerd version 0.3.0
+* Updated Docker to version 20.10.22
+* Updated kubectl to version 1.26.0
+* Updated Helm to version 3.10.3
+* Updated kubetail to version 1.6.17
+* Updated build process to support VirtualBox 7
+* Updated build dependencies: VirtualBox (7.0.4r154605), Packer (1.8.5), Vagrant (2.3.4)
+
 ### 1.1.1-20221125
 * Updated ilionx/ubuntu2204 base box to version 1.1.1-20221124
 * Updated minikube to version 1.28.0
