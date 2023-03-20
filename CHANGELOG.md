@@ -1,5 +1,15 @@
 ## Changelog
 
+### 1.3.0-20230320
+* Updated ilionx/ubuntu2204 base box to version 1.3.0-20230320
+* Updated minikube to version 1.29.0
+* Installed cri-dockerd version 0.3.1
+* Installed cri-tools version 1.26.0-00
+* Updated Docker to version 23.0.1
+* Updated kubectl to version 1.26.3
+* Updated Helm to version 3.11.2
+* Updated build dependencies: VirtualBox (7.0.6r155176), Packer (1.8.6)
+
 ### 1.2.0-20221228
 * Updated ilionx/ubuntu2204 base box to version 1.2.0-20221228
 * Installed cri-dockerd version 0.3.0
