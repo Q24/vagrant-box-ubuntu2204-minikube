@@ -1,5 +1,16 @@
 ## Changelog
 
+### 1.3.1-20230619
+* Updated ilionx/ubuntu2204 base box to version 1.3.1-20230619
+* Updated minikube to version 1.30.1
+* Installed cri-dockerd version 0.3.3
+* Updated Docker to version 24.0.2
+* Updated kubectl to version 1.27.3
+* Updated Helm to version 3.12.1
+* Updated Kubetail to version 1.6.18
+* Updated build dependencies: VirtualBox (7.0.8r156879), Packer (1.9.1), Vagrant (2.3.6)
+* Added bash autocomplete for the `k` and `kc` aliases for `kubectl`
+
 ### 1.3.0-20230320
 * Updated ilionx/ubuntu2204 base box to version 1.3.0-20230320
 * Updated minikube to version 1.29.0

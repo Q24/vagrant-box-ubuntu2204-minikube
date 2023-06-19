@@ -191,10 +191,22 @@
         line: alias k="kubectl"
         insertafter: EOF
 
+    - name: enable bash autocomplete for alias k
+      ansible.builtin.lineinfile:
+        path: /home/vagrant/.bashrc
+        line: complete -F __start_kubectl k
+        insertafter: EOF
+
     - name: enable kubectl alias kc
       ansible.builtin.lineinfile:
         path: /home/vagrant/.bashrc
         line: alias kc="kubectl"
+        insertafter: EOF
+
+    - name: enable bash autocomplete for alias kc
+      ansible.builtin.lineinfile:
+        path: /home/vagrant/.bashrc
+        line: complete -F __start_kubectl kc
         insertafter: EOF
 
     - name: copy minikube conf
