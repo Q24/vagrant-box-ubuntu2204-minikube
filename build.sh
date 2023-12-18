@@ -3,25 +3,26 @@
 set -e
 
 # Set version info
-export BOX_VERSION_BASE="1.3.1"
+export BOX_VERSION_BASE="1.4.0"
 
 # Set versions requested of main components (These will be used in Packer and passed to Ansible downstream)
 # The apt package versions can be determined with "apt-get madison <package name>", use the exact version number!
 export BOX_BASE="ilionx/ubuntu2204"
-export BOX_BASE_VERSION="1.3.1-20230619"
-export MINIKUBE_VERSION="1.30.1"
-export CRIDOCKERD_VERSION="0.3.3"
+export BOX_BASE_VERSION="1.4.0-20231218"
+export MINIKUBE_VERSION="1.32.0"
+export CRIDOCKERD_VERSION="0.3.8"
 export CRITOOLS_VERSION="1.26.0-00"
-export DOCKER_VERSION="5:24.0.2-1~ubuntu.22.04~jammy"
-export KUBECTL_VERSION="1.27.3-00"
-export HELM_VERSION="3.12.1"
+export DOCKER_VERSION="5:24.0.7-1~ubuntu.22.04~jammy"
+export KUBECTL_VERSION="1.28.2-00"
+export CNI_PLUGINS_VERSION="1.4.0"
+export HELM_VERSION="3.13.3"
 export KUBETAIL_VERSION="1.6.18"
 export KUBELOGS_VERSION="0.0.1"
 
 # Set versions of supported tools, if they don't match, a warning will be shown on screen
-export VIRTUALBOX_VERSION="7.0.8r156879"
-export PACKER_VERSION="1.9.1"
-export VAGRANT_VERSION="2.3.6"
+export VIRTUALBOX_VERSION="7.0.12r159484"
+export PACKER_VERSION="1.9.5"
+export VAGRANT_VERSION="2.4.0"
 
 # Set the Vagrant cloud user and box name (make sure you have admin permissions to, or are the owner of this repository)
 export VAGRANT_CLOUD_BOX_USER="ilionx"

@@ -122,6 +122,30 @@
         state: present
         update_cache: true
 
+    - name: download cni_plugins {{ cni_plugins_version }}
+      ansible.builtin.get_url:
+        url: https://github.com/containernetworking/plugins/releases/download/v{{ cni_plugins_version }}/cni-plugins-linux-amd64-v{{ cni_plugins_version }}.tgz
+        dest: /var/tmp/cni-plugins-linux-amd64-v{{ cni_plugins_version }}.tgz
+        mode: '0755'
+
+    - name: create dir /opt/cni/bin
+      ansible.builtin.file:
+        path: /opt/cni/bin
+        state: directory
+        mode: '0755'
+
+    - name: extract cni_plugins version {{ cni_plugins_version }}
+      ansible.builtin.unarchive:
+        src: /var/tmp/cni-plugins-linux-amd64-v{{ cni_plugins_version }}.tgz
+        remote_src: yes
+        dest: /opt/cni/bin
+        mode: '0755'
+
+    - name: delete downloaded cni_plugins version {{ cni_plugins_version }} installer
+      ansible.builtin.file:
+        path: /var/tmp/cni-plugins-linux-amd64-v{{ cni_plugins_version }}.tgz
+        state: absent
+
     - name: start minikube
       ansible.builtin.shell: minikube start --driver=none --cni=bridge
 
@@ -221,7 +245,7 @@
       ansible.builtin.get_url:
         url: https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz
         dest: /var/tmp/helm-v{{ helm_version }}-linux-amd64.tar.gz
-        mode: 0755
+        mode: '0755'
 
     - name: extract helm version {{ helm_version }}
       ansible.builtin.unarchive:
@@ -231,7 +255,7 @@
         extra_opts:
           - "linux-amd64/helm"
           - "--strip-components=1"
-        mode: 0755
+        mode: '0755'
 
     - name: delete downloaded helm version {{ helm_version }} installer
       ansible.builtin.file:
@@ -241,7 +265,7 @@
     - name: change helm executable ownership to vagrant
       ansible.builtin.file:
         path: /home/vagrant/bin/helm
-        mode: 0755
+        mode: '0755'
         owner: vagrant
         group: vagrant
       

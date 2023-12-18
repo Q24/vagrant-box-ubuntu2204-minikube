@@ -15,6 +15,7 @@ Check [README.md](README.md) to install all necessary tools and configurations t
 * Check if there is a new [cri-tools](https://github.com/kubernetes-sigs/cri-tools/releases) release using `apt list -a cri-tools`, if so update `CRITOOLS_VERSION`.
 * Check if there is a new [Docker](https://docs.docker.com/engine/release-notes/) release using `apt list -a docker-ce`, if so update `DOCKER_VERSION`.
 * Check if there is a new [kubectl](https://github.com/kubernetes/kubernetes/releases) release using `apt list -a kubectl`, if so update `KUBECTL_VERSION`.
+* Check if there is a new [CNI Plugins](https://github.com/containernetworking/plugins/releases) release, if so update `CNI_PLUGINS_VERSION`.
 * Check if there is a new [Helm](https://github.com/helm/helm/releases) release, if so update `HELM_VERSION`.
 * Check if there is a new [kubetail](https://github.com/johanhaleby/kubetail/releases) release, if so update `KUBETAIL_VERSION`.
 * Check if there is a new [kubelogs](https://gitlab.com/mrvantage/kubelogs/-/releases) release, if so update `KUBELOGS_VERSION`.
