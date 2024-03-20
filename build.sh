@@ -3,26 +3,27 @@
 set -e
 
 # Set version info
-export BOX_VERSION_BASE="1.4.0"
+export BOX_VERSION_BASE="1.5.0"
 
 # Set versions requested of main components (These will be used in Packer and passed to Ansible downstream)
 # The apt package versions can be determined with "apt-get madison <package name>", use the exact version number!
 export BOX_BASE="ilionx/ubuntu2204"
-export BOX_BASE_VERSION="1.4.0-20231218"
+export BOX_BASE_VERSION="1.5.0-20240320"
 export MINIKUBE_VERSION="1.32.0"
-export CRIDOCKERD_VERSION="0.3.8"
-export CRITOOLS_VERSION="1.26.0-00"
-export DOCKER_VERSION="5:24.0.7-1~ubuntu.22.04~jammy"
-export KUBECTL_VERSION="1.28.2-00"
-export CNI_PLUGINS_VERSION="1.4.0"
-export HELM_VERSION="3.13.3"
-export KUBETAIL_VERSION="1.6.18"
+export CRIDOCKERD_VERSION="0.3.11"
+export CRITOOLS_VERSION="1.28.0-1.1"
+export DOCKER_VERSION="5:25.0.5-1~ubuntu.22.04~jammy"
+export KUBE_REPO_VERSION="1.28"
+export KUBECTL_VERSION="1.28.3-1.1"
+export CNI_PLUGINS_VERSION="1.4.1"
+export HELM_VERSION="3.14.3"
+export KUBETAIL_VERSION="1.6.20"
 export KUBELOGS_VERSION="0.0.1"
 
 # Set versions of supported tools, if they don't match, a warning will be shown on screen
-export VIRTUALBOX_VERSION="7.0.12r159484"
-export PACKER_VERSION="1.9.5"
-export VAGRANT_VERSION="2.4.0"
+export VIRTUALBOX_VERSION="7.0.14r161095"
+export PACKER_VERSION="1.10.2-dev"
+export VAGRANT_VERSION="2.4.1"
 
 # Set the Vagrant cloud user and box name (make sure you have admin permissions to, or are the owner of this repository)
 export VAGRANT_CLOUD_BOX_USER="ilionx"
@@ -123,6 +124,12 @@ Built on commit: \`${commit}\`
 
 export BOX_VERSION_DESCRIPTION
 echo "${BOX_VERSION_DESCRIPTION}"
+
+# Install necessary packer plugins
+echo "Installing packer plugins: virtualbox, ansible, and vagrant"
+packer plugins install github.com/hashicorp/virtualbox
+packer plugins install github.com/hashicorp/ansible
+packer plugins install github.com/hashicorp/vagrant
 
 # Validate build config
 echo "Validating build json files"

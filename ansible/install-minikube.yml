@@ -24,7 +24,7 @@
         dest: /var/tmp/docker-archive-keyring.gpg
 
     - name: convert docker ubuntu apt key with gpg
-      ansible.builtin.shell: gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg /var/tmp/docker-archive-keyring.gpg
+      ansible.builtin.shell: gpg --dearmor -o /etc/apt/keyrings/docker-archive-keyring.gpg /var/tmp/docker-archive-keyring.gpg
 
     - name: delete downloaded docker ubuntu apt key
       ansible.builtin.file:
@@ -33,7 +33,7 @@
 
     - name: add docker repository
       ansible.builtin.apt_repository:
-        repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu jammy stable"
+        repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu jammy stable"
         state: present
 
     - name: install docker-ce version {{ docker_version }}
@@ -97,23 +97,32 @@
         name: cri-docker.socket
         enabled: yes
 
-    - name: download google ubuntu apt key
+    - name: download kubernetes ubuntu apt key for version {{ kube_repo_version }}
       ansible.builtin.get_url:
-        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-        dest: /var/tmp/google-archive-keyring.gpg
+        url: https://pkgs.k8s.io/core:/stable:/v{{ kube_repo_version }}/deb/Release.key
+        dest: /var/tmp/kubernetes-apt-keyring.gpg
 
-    - name: convert google ubuntu apt key with gpg
-      ansible.builtin.shell: gpg --dearmor -o /usr/share/keyrings/google-archive-keyring.gpg /var/tmp/google-archive-keyring.gpg
+    - name: convert kubernetes ubuntu apt key with gpg
+      ansible.builtin.shell: gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg /var/tmp/kubernetes-apt-keyring.gpg
 
-    - name: delete downloaded google ubuntu apt key
+    - name: delete downloaded kubernetes ubuntu apt key
       ansible.builtin.file:
-        path: /var/tmp/google-archive-keyring.gpg
+        path: /var/tmp/kubernetes-apt-keyring.gpg
         state: absent
 
-    - name: add google kubernetes repository
+    - name: add kubernetes ubuntu apt repository for version {{ kube_repo_version }}
       ansible.builtin.apt_repository:
-        repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/google-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main"
-        state: present
+        filename: kubernetes
+        repo: "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v{{ kube_repo_version }}/deb/ /"
+
+    - name: disable apt unattended upgrades
+      ansible.builtin.copy:
+        dest: "/etc/apt/apt.conf.d/20auto-upgrades"
+        content: |
+          APT::Periodic::Unattended-Upgrade "0";
+        mode: 0644
+        owner: root
+        group: root
 
     - name: install cri-tools version {{ critools_version }}
       ansible.builtin.apt:
@@ -231,6 +240,12 @@
       ansible.builtin.lineinfile:
         path: /home/vagrant/.bashrc
         line: complete -F __start_kubectl kc
+        insertafter: EOF
+
+    - name: add an alias for watch so that it works with the k and kc aliases
+      ansible.builtin.lineinfile:
+        path: /home/vagrant/.bashrc
+        line: alias watch="watch "
         insertafter: EOF
 
     - name: copy minikube conf

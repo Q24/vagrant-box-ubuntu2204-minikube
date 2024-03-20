@@ -1,5 +1,17 @@
 ## Changelog
 
+### 1.5.0-20240320
+* Updated ilionx/ubuntu2204 base box to version 1.5.0-20240320
+* Updated to new Kubernetes APT repository
+* Updated cri-dockerd to version 0.3.11
+* Updated critools to version 1.28.0-1.1
+* Updated Docker to version 25.0.5
+* Updated kubectl to version 1.28.3
+* Installed CNI Plugins version 1.4.1
+* Updated Helm to version 3.14.3
+* Updated Kubetail to version 1.6.20
+* Updated build dependencies: VirtualBox (7.0.14r161095), Packer (1.10.2-dev), Vagrant (2.4.1)
+
 ### 1.4.0-20231218
 * Updated ilionx/ubuntu2204 base box to version 1.4.0-20231218
 * Updated minikube to version 1.32.0
