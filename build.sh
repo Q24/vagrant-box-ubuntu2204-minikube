@@ -26,7 +26,7 @@ export PACKER_VERSION="1.10.2-dev"
 export VAGRANT_VERSION="2.4.1"
 
 # Set the Vagrant cloud user and box name (make sure you have admin permissions to, or are the owner of this repository)
-export VAGRANT_CLOUD_BOX_USER="ilionx"
+export VAGRANT_CLOUD_BOX_USER="ilionxde"
 export VAGRANT_CLOUD_BOX_NAME="ubuntu2204-minikube"
 
 # ############################################################################################## #
@@ -66,25 +66,25 @@ then
     source build.env
 fi
 
-# Check if the variables VAGRANT_CLOUD_USER and VAGRANT_CLOUD_TOKEN have been set, if not ask for them
-if [ -z "$DEFAULT_VAGRANT_CLOUD_USER" ] || [ -z "$DEFAULT_VAGRANT_CLOUD_TOKEN" ]
+# Check if the variables HCP_CLIENT_ID and HCP_CLIENT_SECRET have been set, if not ask for them
+if [ -z "$DEFAULT_HCP_CLIENT_ID" ] || [ -z "$DEFAULT_HCP_CLIENT_SECRET" ]
 then
     # Ask user for vagrant cloud token
-    echo -n "What is your Vagrant Cloud username? [ilionx] "
+    echo -n "What is your HCP Service Principal Client ID? "
     read -r user
-    user=${user:-ilionx}
-    export VAGRANT_CLOUD_USER=${user}
+    echo ""
+    export HCP_CLIENT_ID=${user}
 
     # Ask user for vagrant cloud token
-    echo -n "What is your Vagrant Cloud token? "
+    echo -n "What is your HCP Service Principal Client Secret? "
     read -rs token
     echo ""
-    export VAGRANT_CLOUD_TOKEN=${token}
+    export HCP_CLIENT_SECRET=${token}
 else
-    export VAGRANT_CLOUD_USER=$DEFAULT_VAGRANT_CLOUD_USER
-    export VAGRANT_CLOUD_TOKEN=$DEFAULT_VAGRANT_CLOUD_TOKEN
+    export HCP_CLIENT_ID=$DEFAULT_HCP_CLIENT_ID
+    export HCP_CLIENT_SECRET=$DEFAULT_HCP_CLIENT_SECRET
 
-    echo "Your vagrant cloud user and token have been sourced from file build.env"
+    echo "Your HCP Client ID and Secret have been sourced from file build.env"
 fi
 
 # Export dynamic versioning info
