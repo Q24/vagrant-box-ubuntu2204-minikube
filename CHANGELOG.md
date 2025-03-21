@@ -1,16 +1,29 @@
 ## Changelog
 
+### 1.6.0-20250321
+* The box has moved from ilionx/ubuntu2204-minikube to ilionxde/ubuntu2204-minikube
+* Updated ilionxde/ubuntu2204 base box to version 1.6.0-20250321
+* Updated minikube to version 1.35.0
+* Updated cri-dockerd to version 0.3.16
+* Updated Docker to version 28.0.1
+* Updated kubectl to version 1.32.3
+* Installed CNI Plugins version 1.6.2
+* Updated Helm to version 3.17.2
+* Updated build dependencies: VirtualBox (7.1.6r167084), Packer (1.12.0), Vagrant (2.4.3)
+* Converted build and Packer scripts to be compatible with new HashiCorp Cloud Platform (HCP)
+
 ### 1.5.0-20240320
 * Updated ilionx/ubuntu2204 base box to version 1.5.0-20240320
 * Updated to new Kubernetes APT repository
 * Updated cri-dockerd to version 0.3.11
-* Updated critools to version 1.28.0-1.1
+* Updated critools to version 1.32.0-1.1
 * Updated Docker to version 25.0.5
 * Updated kubectl to version 1.28.3
 * Installed CNI Plugins version 1.4.1
 * Updated Helm to version 3.14.3
 * Updated Kubetail to version 1.6.20
-* Updated build dependencies: VirtualBox (7.0.14r161095), Packer (1.10.2-dev), Vagrant (2.4.1)
+* Updated build dependencies: VirtualBox (7.1.6r167084), Packer (1.12.0), Vagrant (2.4.3)
+* Converted build and Packer scripts to be compatible with new HashiCorp Cloud Platform (HCP)
 
 ### 1.4.0-20231218
 * Updated ilionx/ubuntu2204 base box to version 1.4.0-20231218

@@ -57,6 +57,16 @@
         groups: docker
         append: yes
 
+    - name: load br_netfilter kernel module by default
+      ansible.builtin.lineinfile:
+        path: /etc/modules
+        line: br_netfilter
+        state: present
+        insertafter: EOF
+
+    - name: load br_netfilter module immediately
+      ansible.builtin.shell: modprobe br_netfilter
+
     - name: set bridge-nf-call-iptables = 1
       ansible.builtin.lineinfile:
         path: /etc/sysctl.conf
